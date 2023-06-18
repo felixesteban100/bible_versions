@@ -5,13 +5,18 @@
 // const cors = require('cors')
 // const app = express()
 
-import dotenv from 'dotenv';
-import express, { Express, Request, Response } from 'express';
-import mongoose, { Schema, Document } from 'mongoose';
-import cors from 'cors';
-import z from 'zod'
+// import dotenv from 'dotenv';
+import /* express,  */ { Express, Request, Response } from 'express';
+// import mongoose from 'mongoose';
+// import cors from 'cors';
+import { z } from 'zod'
 
-dotenv.config();
+require('dotenv').config();
+const express = require('express')
+const mongoose = require('mongoose')
+const cors = require('cors')
+// const z = require('zod')
+
 
 const app: Express = express();
 
