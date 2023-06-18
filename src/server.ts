@@ -6,7 +6,7 @@
 // const app = express()
 
 // import dotenv from 'dotenv';
-import /* express,  */ { Express, Request, Response } from 'express';
+// import express,  { Express, Request, Response } from 'express';
 // import mongoose from 'mongoose';
 // import cors from 'cors';
 import { z } from 'zod'
@@ -18,7 +18,7 @@ const cors = require('cors')
 // const z = require('zod')
 
 
-const app: Express = express();
+const app/* : Express  */= express();
 
 //MIDDLEWARE
 app.use(express.json())
@@ -81,13 +81,13 @@ type Version = z.infer<typeof VersionSchema>
 
 const Version = mongoose.model("Version", versionSchema)
 
-app.get("/", (req: Request, res: Response) => {
+app.get("/", (req/* : Request */, res/* : Response */) => {
     console.log("ok")
 
     res.send("Hello VERSIONS")
 })
 
-app.get("/:shortName", (req: Request, res: Response) => {
+app.get("/:shortName", (req/* : Request */, res/* : Response */) => {
     const { shortName } = req.params;
 
     Version.findOne({ versionShortName: shortName.toUpperCase() })
