@@ -13,7 +13,7 @@
 
 require('dotenv').config();
 const express = require('express')
-// const mongoose = require('mongoose')
+const mongoose = require('mongoose')
 const cors = require('cors')
 // const z = require('zod')
 
@@ -26,7 +26,15 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }))
 
 // connect to Database
-const connectToDB = require('./db/connect')
+function connectDB(url/* : string */){
+    return mongoose.connect(
+        url,
+        {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        }
+    )
+}
 
 
 /* const VersionSchema = z.object({
@@ -129,7 +137,7 @@ app.get("/:shortName", (req/* : Request */, res/* : Response */) => {
 const port = process.env.PORT?.toString() || "3924";
 async function start() {
     try {
-        await connectToDB(process.env.MONGO_URI)
+        await connectDB(process.env.MONGO_URI)
         app.listen(port, () => console.log(`http://localhost:${port}`))
     } catch (error) {
         console.log(error)

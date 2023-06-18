@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
+/* const mongoose = require('mongoose')
 
-function connectDB(url/* : string */){
+function connectDB(url: string){
     return mongoose.connect(
         url,
         {
@@ -10,4 +10,4 @@ function connectDB(url/* : string */){
     )
 }
 
-module.exports = connectDB
+module.exports = connectDB */
