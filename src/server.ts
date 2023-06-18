@@ -29,7 +29,7 @@ app.use(express.urlencoded({ extended: true }))
 const connectToDB = require('./db/connect')
 
 
-const VersionSchema = z.object({
+/* const VersionSchema = z.object({
     versionFullName: z.string(),
     versionShortName: z.string(),
     booksInTheVersion: z.array(
@@ -50,7 +50,9 @@ const VersionSchema = z.object({
             })),
         })
     ),
-});
+}); */
+
+// type Version = z.infer<typeof VersionSchema>
 
 const versionSchema = new mongoose.Schema({
     versionFullName: String,
@@ -77,7 +79,27 @@ const versionSchema = new mongoose.Schema({
     ]
 })
 
-type Version = z.infer<typeof VersionSchema>
+
+type Version = {
+    versionFullName: string;
+    versionShortName: string;
+    booksInTheVersion: Array<{
+      book: {
+        bookid: number;
+        name: string;
+        chronorder: number;
+        chapters: number;
+      };
+      chaptersContent: Array<{
+        chapterNumber: number;
+        verses: Array<{
+          pk: number;
+          verse: number;
+          text: number;
+        }>;
+      }>;
+    }>;
+  };
 
 const Version = mongoose.model("Version", versionSchema)
 
