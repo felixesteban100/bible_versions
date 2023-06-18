@@ -18,7 +18,7 @@ const cors = require('cors')
 // const z = require('zod')
 
 
-const app/* : Express  */= express();
+const app/* : Express  */ = express();
 
 //MIDDLEWARE
 app.use(express.json())
@@ -80,26 +80,26 @@ const versionSchema = new mongoose.Schema({
 })
 
 
-type Version = {
+/* type Version = {
     versionFullName: string;
     versionShortName: string;
     booksInTheVersion: Array<{
-      book: {
-        bookid: number;
-        name: string;
-        chronorder: number;
-        chapters: number;
-      };
-      chaptersContent: Array<{
-        chapterNumber: number;
-        verses: Array<{
-          pk: number;
-          verse: number;
-          text: number;
+        book: {
+            bookid: number;
+            name: string;
+            chronorder: number;
+            chapters: number;
+        };
+        chaptersContent: Array<{
+            chapterNumber: number;
+            verses: Array<{
+                pk: number;
+                verse: number;
+                text: number;
+            }>;
         }>;
-      }>;
     }>;
-  };
+}; */
 
 const Version = mongoose.model("Version", versionSchema)
 
@@ -113,7 +113,7 @@ app.get("/:shortName", (req/* : Request */, res/* : Response */) => {
     const { shortName } = req.params;
 
     Version.findOne({ versionShortName: shortName.toUpperCase() })
-        .then((version: Version | null) => {
+        .then((version) => {
             if (version) {
                 res.json(version);
             } else {
