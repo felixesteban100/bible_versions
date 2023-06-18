@@ -120,7 +120,7 @@ app.get("/:shortName", (req/* : Request */, res/* : Response */) => {
                 res.status(404).json({ error: "Version not found" });
             }
         })
-        .catch((err: any) => {
+        .catch((err) => {
             console.log(err);
             res.status(500).json({ error: "Internal server error" });
         });
