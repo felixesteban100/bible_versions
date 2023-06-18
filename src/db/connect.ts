@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-function connectDB(url: string){
+function connectDB(url/* : string */){
     return mongoose.connect(
         url,
         {
