@@ -19,7 +19,7 @@
     "@types/cors": "^2.8.13",
     "@types/mongoose": "^5.11.97",
     "cors": "^2.8.5",
-    "mongoose": "7.2.0",
+    "mongoose": "^7.3.0",
     "nodemon": "^2.0.22",
     "zod": "^3.21.4"
   }
